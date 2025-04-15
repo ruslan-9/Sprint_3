@@ -17,17 +17,14 @@ class OnlineSalesRegisterCollector:
     def add_item_to_cheque(self, name):
         if name == 0 or len(name) > 40:
             raise ValueError('Нельзя добавить товар, если в его названии нет символов или их больше 40')
-        
         if name not in self.__item_price:
             raise NameError('Позиция отсутствует в товарном справочнике')
-        
         self.__name_items.append(name)
         self.__number_items += 1
 
     def delete_item_from_check(self, name):
         if name not in self.__name_items:
             raise NameError('Позиция отсутствует в чеке')
-        
         self.__name_items.remove(name)
         self.__number_items -= 1
 
@@ -35,7 +32,6 @@ class OnlineSalesRegisterCollector:
         total = 0
         for item in self.__name_items:
             total += self.__item_price[item]
-    
         if self.__number_items > 10:
             total *= 0.9
         return total
